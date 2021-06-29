@@ -135,7 +135,7 @@ for t in types:
     colors += '#declare type_%s = rgbt <%.6f,%.6f,%.6f,%.6f>;\n' % (t, *tuple(color_dict[t]))
 
 for f in argv[1:]:
-    out_put = open('/home/shirui/pic-2021-06-03/' + f.replace('.xml', '.pov').replace('../', ''), 'w')
+    out_put = open(f.replace('.xml', '.pov'), 'w')
     out_put.write(header)
     out_put.write(colors)
     xml = Xml(f, needed=['position'])
