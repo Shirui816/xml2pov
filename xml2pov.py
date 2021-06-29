@@ -153,9 +153,9 @@ for f in argv[1:]:
         is_dr_a = not np.isclose(r_ba, box / 2, atol=0.001).any()
         if is_dr_a:
             ratio = 1
-            r = r_ba / (box / 2)
-            if (np.abs(r) > 1.0).any():
-                ratio = r[np.argmax(np.abs(r))]
+            r = np.abs(r_ba / (box / 2))
+            if (r > 1.0).any():
+                ratio = r.max()
             r_ba = r_ba / ratio
             dr_a = r_ba - pa
             out_put.write('CYL(<%.6f, %.6f, %.6f>, <%.6f, %.6f, %.6f>, %.4f, type_%s)\n' %
@@ -165,9 +165,9 @@ for f in argv[1:]:
         is_dr_b = not np.isclose(r_ab, box / 2, atol=0.001).any()
         if is_dr_b:
             ratio = 1
-            r = r_ab / (box / 2)
-            if (np.abs(r) > 1.0).any():
-                ratio = r[np.argmax(np.abs(r))]
+            r = np.abs(r_ab / (box / 2))
+            if (r > 1.0).any():
+                ratio = r.max()
             r_ab = r_ab / ratio
             dr_b = r_ab - pb
             out_put.write('CYL(<%.6f, %.6f, %.6f>, <%.6f, %.6f, %.6f>, %.4f, type_%s)\n' %
